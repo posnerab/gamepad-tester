@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gamepad Tester</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="favicon.ico">
+    <link rel="apple-touch-icon-precomposed" href="favicon.ico">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎮 Gamepad Tester</h1>
+            <p>Test USB, Bluetooth, and Wireless Controllers</p>
+        </header>
+
+        <div class="status-bar">
+            <div class="connection-status" id="connectionStatus">
+                <span class="status-indicator" id="statusIndicator"></span>
+                <span id="statusText">No controllers detected</span>
+            </div>
+            <div class="controller-count" id="controllerCount">
+                Connected: <span id="connectedCount">0</span>
+            </div>
+        </div>
+
+        <div class="controllers-grid" id="controllersGrid">
+            <!-- Controllers will be dynamically added here -->
+        </div>
+
+        <div class="no-controllers" id="noControllers">
+            <div class="no-controllers-content">
+                <div class="controller-icon">🎮</div>
+                <h3>No Controllers Detected</h3>
+                <p>Connect a USB, Bluetooth, or wireless controller to get started.</p>
+                <div class="connection-tips">
+                    <h4>Connection Tips:</h4>
+                    <ul>
+                        <li><strong>USB:</strong> Plug directly into your computer</li>
+                        <li><strong>Bluetooth:</strong> Pair in your system settings first</li>
+                        <li><strong>Wireless:</strong> Ensure receiver is connected</li>
+                        <li><strong>Browser:</strong> Press any button on your controller</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="system-info">
+            <h3>System Information</h3>
+            <div class="info-grid">
+                <div class="info-item">
+                    <label>User Agent:</label>
+                    <span id="userAgent"></span>
+                </div>
+                <div class="info-item">
+                    <label>Gamepad API Support:</label>
+                    <span id="gamepadSupport"></span>
+                </div>
+                <div class="info-item">
+                    <label>Vibration API Support:</label>
+                    <span id="vibrationSupport"></span>
+                </div>
+                <div class="info-item">
+                    <label>Haptic Actuator Support:</label>
+                    <span id="hapticSupport"></span>
+                </div>
+                <div class="info-item">
+                    <label>Web HID API Support:</label>
+                    <span id="hidSupport"></span>
+                </div>
+                <div class="info-item">
+                    <label>Polling Rate:</label>
+                    <span id="pollingRate">Calculating...</span>
+                </div>
+                <div class="info-item">
+                    <label>Frame Rate:</label>
+                    <span id="frameRate">Calculating...</span>
+                </div>
+                <div class="info-item">
+                    <label>Input Polling Rate:</label>
+                    <span id="inputPollingRate">Calculating...</span>
+                </div>
+                <div class="info-item">
+                    <label>Max Input Polling Rate:</label>
+                    <span id="maxInputPollingRate">Calculating...</span>
+                </div>
+            </div>
+            <div id="pollingWarning" style="display:none; color:#b71c1c; background:#fff3cd; border:1px solid #ffeeba; border-radius:8px; padding:12px; margin-top:18px; font-size:1rem;">
+                <strong>Warning:</strong> Your browser or OS is limiting the maximum input polling rate. Actual controller hardware may support higher rates (e.g., 1000Hz), but browsers typically poll at 60-250Hz. For true hardware polling, use a native tool like the provided Python/pygame script.
+            </div>
+            
+            <div class="controller-debug" id="controllerDebug" style="margin-top: 20px; display: none;">
+                <h4>Controller Debug Information</h4>
+                <div class="debug-content" id="debugContent"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
